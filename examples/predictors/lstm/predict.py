@@ -2,7 +2,6 @@
 
 import argparse
 import os
-# import ipdb
 import pandas as pd
 
 from examples.predictors.lstm.xprize_predictor import XPrizePredictor
@@ -36,8 +35,6 @@ def predict(start_date: str,
     """
     # !!! YOUR CODE HERE !!!
 
-    # ishann
-    #ipdb.set_trace()
     cutoff_date = pd.to_datetime(CUTOFF_DATE, format='%Y-%m-%d')
     predictor = XPrizePredictor(MODEL_WEIGHTS_FILE, DATA_FILE, cutoff_date)
     # Generate the predictions

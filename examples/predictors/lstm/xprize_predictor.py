@@ -3,8 +3,6 @@
 import os
 import urllib.request
 
-# import ipdb
-
 # Suppress noisy Tensorflow debug logging
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
@@ -30,20 +28,7 @@ ADDITIONAL_CONTEXT_FILE = os.path.join(DATA_PATH, "Additional_Context_Data_Globa
 ADDITIONAL_US_STATES_CONTEXT = os.path.join(DATA_PATH, "US_states_populations.csv")
 ADDITIONAL_UK_CONTEXT = os.path.join(DATA_PATH, "uk_populations.csv")
 
-#ishann
 # Depreciated with updates to data API.
-#NPI_COLUMNS = ['C1_School closing',
-#               'C2_Workplace closing',
-#               'C3_Cancel public events',
-#               'C4_Restrictions on gatherings',
-#               'C5_Close public transport',
-#               'C6_Stay at home requirements',
-#               'C7_Restrictions on internal movement',
-#               'C8_International travel controls',
-#               'H1_Public information campaigns',
-#               'H2_Testing policy',
-#               'H3_Contact tracing',
-#               'H6_Facial Coverings']
 NPI_COLUMNS = ['C1M_School closing',
            'C2M_Workplace closing',
            'C3M_Cancel public events',
@@ -249,10 +234,7 @@ class XPrizePredictor(object):
                                 encoding="ISO-8859-1",
                                 dtype={"RegionName": str,
                                        "RegionCode": str},
-                                # Depreciated.
-                                # ishann
-                                error_bad_lines=False)
-                                # on_bad_lines="skip")
+                                on_bad_lines="skip")
         # Handle regions.
         # Replace CountryName by CountryName / RegionName
         # np.where usage: if A then B else C
@@ -297,8 +279,6 @@ class XPrizePredictor(object):
 
         # Append the new data to additional_df
         # additional_context_df = additional_context_df.append(additional_us_states_df)
-        # ishann
-        # df1.append(df2) has been depreciated.
         # print("Shapes of the the two DFs: {}, {}".format(additional_context_df.shape, additional_us_states_df.shape))
         additional_context_df = pd.concat([additional_context_df, additional_us_states_df])
         # print("Shape of new DF: {}".format(additional_context_df.shape))
@@ -307,8 +287,6 @@ class XPrizePredictor(object):
         additional_uk_df = pd.read_csv(ADDITIONAL_UK_CONTEXT)
         # Append the new data to additional_df
         # additional_context_df = additional_context_df.append(additional_uk_df)
-        # ishann
-        # df1.append(df2) has been depreciated.
         additional_context_df = pd.concat([additional_context_df, additional_uk_df])
 
         return additional_context_df
