@@ -1,8 +1,8 @@
-conda create --name cs394n_hw2 python=3.10.4
-conda activate cs394n_hw2
+conda create --name cs343_hw3 python=3.10.4
+conda activate cs343_hw3
 
 conda install pip
-# Check that “pip” is pointing to cs394n_hw2’s pip by running “which pip”
+# Check that “pip” is pointing to cs343_hw3’s pip by running “which pip”
 
 # -I ensures existing pre-installed versions of the package are ignored.
 # Optionally, -v provides verbose output to terminal during installation.
